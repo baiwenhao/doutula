@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="content-language" content="zh-CN">
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+  <link rel="shortcut icon" href="http://www.doutula.com/favicon.ico" type="image/x-icon">
+  <meta name="HandheldFriendly" content="true">
+  <meta name="apple-mobile-web-app-title" content="斗图啦">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="format-detection" content="telphone=no, email=no">
+  <meta name="keywords" content="斗图,斗图啦,斗图网,斗图大会,表情三巨头,蘑菇头,小学生,撕逼图片,搞笑斗图,熊猫表情,微信滑稽表情,猥琐表情,斗图大会开始了,斗图图片,斗图大赛,金馆长斗图表情,金馆长表情,金馆长斗图吧,金馆长qq表情包">
+  <meta name="description" content="斗图啦，收集了成千上万的撕逼斗图表情包，在这里你可以快速找到想要的表情，通过在线表情制作可以快速生成自定义表情。">
+  <meta http-equiv="Cache-Control" content="no-transform">
+  <meta http-equiv="Cache-Control" content="no-siteapp">
+  <title></title>
+  <link rel="apple-touch-icon" sizes="512x512" href="http://www.doutula.com/img/logo_512.png">
+  <link rel="stylesheet" type="text/css" href="./bootstrap-79a34bc88c.css">
+  <link rel="stylesheet" type="text/css" href="./zz-312d86891e.css">
+  <link rel="stylesheet" type="text/css" href="./maker-214103d18c.css">
+  <link rel="stylesheet" type="text/css" href="./font_280901_wwdman6g3qh0k9.css">
+  <link rel="stylesheet" type="text/css" href="feedback.css">
+  <!--[if lt IE 9]>
+    <script src="http://cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="http://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="bg"></div>
+  <div class="container_">
+    <div id="maker_container">
+      <div class="canvas-container">
+        <canvas id="canvas" class="lower-canvas"></canvas>
+      </div>
+    </div>
+
+    <!--左侧工具栏 S-->
+    <div class="toolbar">
+      <div data-mode="drag_mode" id="drag_mode" class="select active"><i class="iconfont icon-select"></i><span>选择</span></div>
+      <div id="delete_selected" class="delete"><i class="iconfont icon-delete"></i><span>删除</span></div>
+      <div id="flip_lr" class="rewards layer_control"><i class="iconfont icon-cz"></i><span>左右翻转</span></div>
+      <div class="layer_control layer_up" data-control="up"><i class="iconfont icon-forward"></i><span>向上</span></div>
+      <div class="type" id="slider-btn"><i class="iconfont icon-photos"></i><span>素材</span></div>
+      <div id="generate_picture" class="picture"><i class="iconfont icon-export"></i><span>生成</span></div>
+      <div data-mode="free_draw" id="free_draw" class="draw">
+        <i class="iconfont icon-draw"></i>
+        <div class="line">
+          <div class="dot" style="left: 15%; touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></div>
+          <img class="dot-bg" src="./dist/stroke-width.svg">
+        </div>
+      </div>
+      <div data-mode="add_text" class="font-size" id="add-text">
+        <i class="iconfont icon-fontsize"></i>
+        <div class="select_font">
+          <i class="iconfont icon-arrow"></i>
+          <select>undefined
+            <option value="PingFang SC">简体苹方</option>
+            <option value="PingFang TC">繁体苹方</option>
+            <option value="PingFang HK">香港苹方</option>
+            <option value="STHeiti">华文黑体</option>
+            <option value="STKaiti">华文楷体</option>
+            <option value="STSong">华文宋体</option>
+            <option value="STFangsong">华文仿宋</option>
+            <option value="Hiragino Sans GB">冬青黑体</option>
+            <option value="Apple LiGothic">俪中黑</option>
+            <option value="Apple LiSung">俪细宋</option>
+            <option value="BiauKai">标楷体</option>
+            <option value="LiHei Pro">俪黑Pro</option>
+            <option value="Lantinghei SC">兰亭黑-简</option>
+            <option value="Lantinghei TC">兰亭黑-繁</option>
+            <option value="Baoli SC">华文报隶-简</option>
+            <option value="Baoli TC">华文报隶-繁</option>
+            <option value="Hannotate SC">手札体-简</option>
+            <option value="Hannotate TC">手札体-繁</option>
+            <option value="Hanzipen SC">翩翩体-简</option>
+            <option value="Hanzipen TC">翩翩体-繁</option>
+            <option value="Libian SC">隶变-简</option>
+            <option value="Libian TC">隶变-繁</option>
+            <option value="LingWai SC">凌慧体-简</option>
+            <option value="LingWai TC">凌慧体-繁</option>
+            <option value="Wawati SC">娃娃体-简</option>
+            <option value="Wawati TC">娃娃体-繁</option>
+            <option value="Weibei SC">魏碑-简</option>
+            <option value="Wawati TC">魏碑-繁</option>
+            <option value="Xingkai SC">行楷-简</option>
+            <option value="Xingkai TC">行楷-繁</option>
+            <option value="Yuanti SC">圆体-简</option>
+            <option value="Yuanti TC">圆体-繁</option>
+            <option value="Yuppy SC">雅痞-简</option>
+            <option value="Yuppy TC">雅痞-繁</option>
+          </select>
+        </div>
+      </div>
+      <div id="flip_ud" class="forwards layer_control"><i class="iconfont icon-sp"></i><span>上下翻转</span></div>
+      <div class="layer_control layer_down" data-control="down"><i class="iconfont icon-backward"></i><span>向下</span></div>
+      <div class="color">
+        <div style="position: relative;">
+          <button class="color-input background" style="background: #000;"></button>
+        </div>
+      </div>
+      <div id="magic" class="magic"><i class="iconfont icon-menu"></i><span>菜单</span></div>
+    </div>
+    <!--左侧工具栏 E-->
+
+    <!--右侧素材pc S-->
+    <div class="slider active" id="slider">
+      <div class="slider-tp">
+        <div class="take-photo">上传图片
+          <input id="upload_image" type="file" name="take-photo">
+        </div>
+        <ul id="cate1_filter">
+          <li data-cate1="单图" class="active">单图</li>
+          <li data-cate1="杂项">杂项</li>
+          <li data-cate1="武器">武器</li>
+          <li data-cate1="脸部">脸部</li>
+          <li data-cate1="身体">身体</li>
+        </ul>
+      </div>
+      <div class="slider-nav" id="cate2_filter">
+      </div>
+      <div class="slider-content">
+        <div class="loading" style="display:none;"><i class="iconfont icon-loading"></i></div>
+        <div id="image_container"></div>
+      </div>
+    </div>
+    <!--右侧素材pc E-->
+    <a target="_blank" href="https://wj.qq.com/s/1715334/216f/" class="feedbackM"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></a>
+    <!--右侧素材mobile S-->
+    <div class="slider-mobile" id="slider-mobile" tabindex="1">
+      <div class="choose">
+        <input type="file" id="mobile_upload_image">上传图片</div>
+      <div id="mobile_cate2_filter">
+        <div class="scroll">
+          <ul id="mobile_two" class="tag"></ul>
+        </div>
+      </div>
+      <div class="content">
+        <div class="loading" style="display:none;"><i class="iconfont icon-loading"></i></div>
+        <div id="mobile_image_container">
+          <div class="scroll"></div>
+        </div>
+      </div>
+    </div>
+    <!--右侧素材mobile E-->
+
+    <!--滚动条 S-->
+    <div class="scroll-bar scroll-bar-x">
+      <div class="handle-x" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); transform: translateX(428.5px);"></div>
+    </div>
+    <div class="scroll-bar scroll-bar-y">
+      <div class="handle-y" style="touch-action: none; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); transform: translateY(421.5px);"></div>
+    </div>
+    <!--滚动条 E-->
+
+    <input type="hidden" id="csrf_token" value="gLQ1eUHz9ZTvD5QkFnXnQnCKosKsOU0tq3Z04Uy6" name="_token">
+  </div>
+  <div id="nav">
+    <div class="container">
+      <div class="navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="http://www.doutula.com/article/list">最新套图</a></li>
+          <li><a href="http://www.doutula.com/photo/list">最新表情</a></li>
+          <li><a href="http://www.doutula.com/maker">表情制作器</a></li>
+          <li><a href="http://www.doutula.com/zz/list">表情模板</a></li>
+          <li><a href="http://www.doutula.com/wxqun">我要加群</a></li>
+          <li><a href="http://www.doutula.com/faq">微信机器人</a></li>
+          <li><a href="http://www.doutula.com/please">帮助我们</a></li>
+          <li><a href="http://www.doutula.com/cooperation">合作相关</a></li>
+          <li><a href="http://www.doutula.com/contribute">表情投稿</a></li>
+          <li><a href="http://wx.umilu.com/cleaner">检测僵尸粉</a></li>
+          <li><a href="http://www.umilu.com/index.php?r=index/wap">什么值得买</a></li>
+          <li><a href="http://www.doutula.com/feedback/">意见反馈</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div id="page-blocker"></div>
+  <script type="text/javascript" src="./resources/resources.js"></script>
+  <script type="text/javascript" src="c.js"></script>
+  <script type="text/javascript" src="jquery.min.js"></script>
+  <script type="text/javascript" src="bootstrap.min.js"></script>
+  <script type="text/javascript" src="zepto.min.js"></script>
+  <script type="text/javascript" src="main-64d029863c.js"></script>
+  <script type="text/javascript" src="maker-99557f35cd.js"></script>
+</body>
+
+</html>

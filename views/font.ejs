@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>字体测试</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <style type="text/css">
+    .font {
+      margin-top: 20%;
+      text-align: center;
+      font-size: 36px;
+    }
+    .bottom {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      padding: 12px;
+    }
+    label {
+      display: inline-block;
+      margin: 6px 12px;
+      border: 1px solid #ddd;
+    }
+  </style>
+  <script type="text/javascript" src="http://cdn.webfont.youziku.com/wwwroot/js/wf/youziku.client.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div id="font_text" class="font">测试字体</div>
+  </div>
+  <div id="bottom" class="bottom"></div>
+  <script type="text/javascript" src="/static/api/font.js"></script>
+  <script>
+    var text = '测试字体'
+    var log = console.log
+    var f = ''
+    var buildFont = function () {
+
+      // radio
+      var r = document.querySelector('#bottom')
+      for (var i = 0, len = data_fonts.length; i < len; i++) {
+        f += '<label><input name="test" type="radio" value="' + data_fonts[i].key + '"/>' + data_fonts[i].name + '</label>'
+      }
+      r.innerHTML = f
+      f = ''
+
+      var radio = r.querySelectorAll('input')
+      var fontText = document.querySelector('#font_text')
+
+      for (var i = 0, len = radio.length; i < len; i++) {
+        radio[i].addEventListener('change', function (e) {
+          var v = e.target.value
+          var entity = {
+            AccessKey: v,
+            Content: text
+          }
+          $youzikuClient.getFontFace(entity, function (res) {
+            if (res.Code === 200) {
+              console.log(res)
+              fontText.style.fontFamily = res.FontFamily
+            }
+          })
+        })
+      }
+    }
+
+    var font = function () {
+      const data = { Tags: [] }
+      for (var i = 0; i < data_fonts.length; i++) {
+        data.Tags.push({ AccessKey: data_fonts[i].key, Content: '字' })
+      }
+      $youzikuClient.getBatchFontFace(data, function (res) {
+        console.log(res)
+      })
+    }
+
+    window.onload = function () {
+      // buildFont()
+      font()
+    }
+  </script>
+</body>
+</html>
